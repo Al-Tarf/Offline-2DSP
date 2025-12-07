@@ -80,7 +80,7 @@ void MainWindow::slotSheetDataReady(qreal lenghth, qreal width) {
         _2dsp->Sheet.setY(width);
 
 // Посылаем сигнал на вычисление если в диалоге есть осмысленные данные:
-        if (!lenghth && !width) emit signalRunCalculate();
+        if (lenghth && width) emit signalRunCalculate();
 }
 
 // Слот посылающий событие отрисовки окна:
@@ -97,9 +97,8 @@ void MainWindow::paintEvent(QPaintEvent *event) {
     painter.setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::SquareCap));
     painter.setBrush(QColor(Qt::white));
 
-    // Тестовый участок кода ->
-    _2dsp->Result.push_back(QRect(50, 50, 500, 500));
-    // <- Тестовый участок кода
+    painter.drawRect(_2dsp->Sheet);
 
-    painter.drawRects(_2dsp->Result);
+    // _2dsp->Result.push_back(QRect(50, 50, 500, 500));
+    //painter.drawRects(_2dsp->Result);
 }
