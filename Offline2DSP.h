@@ -1,11 +1,11 @@
-#ifndef _2DSP_H
-#define _2DSP_H
+#ifndef OFFLINE2DSP_H
+#define OFFLINE2DSP_H
 
 #include <QObject>
 #include <QVector>
 #include <QRect>
 
-class _2DSP : public QObject
+class Offline2DSP : public QObject
 {
     Q_OBJECT
 
@@ -16,8 +16,8 @@ public slots:
     void slotRunCalculate();    // Слот выполняющий вычисления
 
 public:
-    explicit _2DSP(QObject *parent = nullptr, uint uiLenghth = 0, uint uiWidth = 0);
-    ~_2DSP();
+    explicit Offline2DSP(QObject *parent = nullptr, uint uiLenghth = 0, uint uiWidth = 0);
+    ~Offline2DSP();
 
     struct Stripe {
         QRect   qrMeasurements; // Размеры одного изделия
@@ -29,4 +29,4 @@ public:
     QVector<QRect>      Result;     // Вектор с результатами расчёта
 };
 
-#endif // _2DSP_H
+#endif // OFFLINE2DSP_H

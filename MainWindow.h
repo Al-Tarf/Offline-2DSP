@@ -7,7 +7,7 @@
 
 #include "ProductsDialog.h"
 #include "SheetDialog.h"
-#include "_2DSP.h"
+#include "Offline2DSP.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -43,7 +43,7 @@ private:
     ProductsDialog  *productsdialog;
     SheetDialog     *sheetdialog;
 // Указатель на объект, получающий исходные данные, производящий расчёты и хранящий их результат
-    _2DSP           *_2dsp;
+    Offline2DSP     *o2dsp;
 
     Ui::MainWindow  *ui;
 };

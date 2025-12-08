@@ -10,16 +10,16 @@ CONFIG += c++17
 
 SOURCES += \
     MainWindow.cpp \
+    Offline2DSP.cpp \
     ProductsDialog.cpp \
     SheetDialog.cpp \
-    _2DSP.cpp \
     main.cpp
 
 HEADERS += \
     MainWindow.h \
+    Offline2DSP.h \
     ProductsDialog.h \
-    SheetDialog.h \
-    _2DSP.h
+    SheetDialog.h
 
 FORMS += \
     MainWindow.ui \

@@ -1,7 +1,7 @@
-#include "_2DSP.h"
+#include "Offline2DSP.h"
 
 // Конструктор:
-_2DSP::_2DSP(QObject *parent, uint uiLenghth, uint uiWidth)
+Offline2DSP::Offline2DSP(QObject *parent, uint uiLenghth, uint uiWidth)
     : QObject(parent), Sheet(0, 0, uiLenghth, uiWidth) {
 // На всякий случай очищаем вектора с исходными данными:
     Products.clear();
@@ -9,12 +9,12 @@ _2DSP::_2DSP(QObject *parent, uint uiLenghth, uint uiWidth)
 }
 
 // Деструктор:
-_2DSP::~_2DSP(){
+Offline2DSP::~Offline2DSP(){
 
 }
 
 // Слот производящий расчёты:
-void _2DSP::slotRunCalculate() {
+void Offline2DSP::slotRunCalculate() {
 // Выходим если не все данные получены:
 
 // Запускаем перерисовку после расчётов:

@@ -34,8 +34,8 @@
     <property name="title">
      <string>Исходные данные</string>
     </property>
-    <addaction name="productsaction"/>
     <addaction name="sheetaction"/>
+    <addaction name="productsaction"/>
    </widget>
    <addaction name="menu"/>
   </widget>
