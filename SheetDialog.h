@@ -19,7 +19,7 @@ class SheetDialog : public QDialog
 
 signals:
 // Сигнал запускающий передачу данных из диалога "Листы-заготовки":
-    void signalSheetDataReady(qreal lenghth, qreal width);
+    void signalSheetDataReady(qreal qLength, qreal qWidth);
 
 private slots:
     void slotButtonClicked(QAbstractButton *button);            // Слот обрабатывающий нажатия кнопок диалога

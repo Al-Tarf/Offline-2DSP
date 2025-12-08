@@ -61,7 +61,7 @@ void ProductsDialog::slotProdlistCellChanged(int row, int column) {
     double  dValue;
 
     switch (column) {
-    case eColumnIndex_Lenghth:
+    case eColumnIndex_Length:
     case eColumnIndex_Width:
         dValue = ui->prodlist->item(row, column)->text().toDouble(&bOK);
         if ((!bOK) || (dValue < 0.1)) {

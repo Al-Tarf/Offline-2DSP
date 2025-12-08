@@ -24,7 +24,7 @@ signals:
 public slots:
 // Слоты, забирающие данные из диалоговых окон, и посылающие сигнал на запуск вычислений:
     void slotProductsDataReady(QTableWidget* pqtv);
-    void slotSheetDataReady(qreal lenghth, qreal width);
+    void slotSheetDataReady(qreal qLength, qreal qWidth);
 // Слот, посылающий событие отрисовки окна:
     void slotRepaintResult();
     void slotShowProductsDialog();
