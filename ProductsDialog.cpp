@@ -7,7 +7,7 @@ ProductsDialog::ProductsDialog(QWidget *parent) :
     ui(new Ui::productsDialog) {
     ui->setupUi(this);
 
-    QStringList qsl { "Длина (см.)", "Ширина (см.)", "Количество (шт.)" };
+    QStringList qsl { "Ширина (см.)", "Высота (см.)", "Количество (шт.)" };
 
     ui->prodlist->setHorizontalHeaderLabels(qsl);
 
@@ -61,8 +61,8 @@ void ProductsDialog::slotProdlistCellChanged(int row, int column) {
     double  dValue;
 
     switch (column) {
-    case eColumnIndex_Length:
     case eColumnIndex_Width:
+    case eColumnIndex_Height:
         dValue = ui->prodlist->item(row, column)->text().toDouble(&bOK);
         if ((!bOK) || (dValue < 0.1)) {
             ui->prodlist->item(row, column)->setText("0.0");

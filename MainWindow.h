@@ -24,7 +24,7 @@ signals:
 public slots:
 // Слоты забирающие данные из диалоговых окон и посылающие сигнал на запуск вычислений:
     void slotProductsDataReady(QTableWidget* pqtv);         // Данные по типам изделий и их количеству можно забирать
-    void slotSheetDataReady(qreal qLength, qreal qWidth);   // Данные о листе-заготовке можно забирать
+    void slotSheetDataReady(qreal qWidth, qreal qHeight);   // Данные о листе-заготовке можно забирать
 // Слот посылающий событие отрисовки окна:
     void slotRepaintResult();
 // Слоты отображающие диалоговые окна:

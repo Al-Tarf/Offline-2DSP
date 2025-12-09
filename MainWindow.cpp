@@ -57,11 +57,11 @@ void MainWindow::slotProductsDataReady(QTableWidget* pQTW) {
 
 // И забираем новые данные из таблицы проверяя их на корректность:
     for (int row = 0; row < pQTW->rowCount(); ++row) {
-        dValue = pQTW->item(row, eColumnIndex_Length)->text().toDouble(&bOK);
-        if ( bOK || (0 < dValue)) o2dsp->stripe.qrMeasurements.setX(uint(dValue * 10)); // Перевод в миллиметры для удобства вычислений
-            else continue;
         dValue = pQTW->item(row, eColumnIndex_Width)->text().toDouble(&bOK);
-            if ( bOK || (0 < dValue)) o2dsp->stripe.qrMeasurements.setY(uint(dValue * 10)); // Перевод в миллиметры для удобства вычислений
+        if ( bOK || (0 < dValue)) o2dsp->stripe.qrMeasurements.setWidth(uint(dValue * 10)); // Перевод в миллиметры для удобства вычислений
+            else continue;
+        dValue = pQTW->item(row, eColumnIndex_Height)->text().toDouble(&bOK);
+            if ( bOK || (0 < dValue)) o2dsp->stripe.qrMeasurements.setHeight(uint(dValue * 10)); // Перевод в миллиметры для удобства вычислений
             else continue;
         nValue = pQTW->item(row, eColumnIndex_Quantity)->text().toUInt(&bOK);
             if ( bOK || (0 < nValue)) o2dsp->stripe.uiQuantity = nValue;
@@ -75,12 +75,12 @@ void MainWindow::slotProductsDataReady(QTableWidget* pQTW) {
 }
 
 // Слот забирающий данные из диалогового окна с параметрами листа-заготовки:
-void MainWindow::slotSheetDataReady(qreal qLength, qreal qWidth) {
-    o2dsp->Sheet.setX(uint(qLength * 1000)); // Перевод в миллиметры для удобства вычислений
-    o2dsp->Sheet.setY(uint(qWidth * 1000)); // Перевод в миллиметры для удобства вычислений
+void MainWindow::slotSheetDataReady(qreal qWidth, qreal qHeight) {
+    o2dsp->Sheet.setWidth(uint(qWidth * 1000));     // Перевод в миллиметры для удобства вычислений
+    o2dsp->Sheet.setHeight(uint(qHeight * 1000));   // Перевод в миллиметры для удобства вычислений
 
 // Посылаем сигнал на вычисление если в диалоге есть осмысленные данные:
-        if (qLength && qWidth) emit signalRunCalculate();
+        if (qWidth && qHeight) emit signalRunCalculate();
 }
 
 // Слот посылающий событие отрисовки окна:

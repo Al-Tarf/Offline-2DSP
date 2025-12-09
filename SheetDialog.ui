@@ -46,14 +46,14 @@
      <item>
       <layout class="QFormLayout" name="sheet_topLayout">
        <item row="0" column="0">
-        <widget class="QLabel" name="sheetlengthLabel">
+        <widget class="QLabel" name="sheetwidthLabel">
          <property name="text">
-          <string>Длина листа (м.):</string>
+          <string>Ширина листа (м.):</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QDoubleSpinBox" name="sheetlength">
+        <widget class="QDoubleSpinBox" name="sheetwidth">
          <property name="decimals">
           <number>3</number>
          </property>
@@ -63,14 +63,14 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="sheetwidthLabel">
+        <widget class="QLabel" name="sheetheightLabel">
          <property name="text">
-          <string>Ширина листа (м.):</string>
+          <string>Высота листа (м.):</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QDoubleSpinBox" name="sheetwidth">
+        <widget class="QDoubleSpinBox" name="sheetheight">
          <property name="decimals">
           <number>3</number>
          </property>

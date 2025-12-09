@@ -19,13 +19,13 @@ class SheetDialog : public QDialog
 
 signals:
 // Сигнал запускающий передачу данных из диалога "Листы-заготовки":
-    void signalSheetDataReady(qreal qLength, qreal qWidth);
+    void signalSheetDataReady(qreal qWidth, qreal qHeight);
 
 private slots:
     void slotButtonClicked(QAbstractButton *button);            // Слот обрабатывающий нажатия кнопок диалога
 // Слоты обрабатывающие изменения значений в полях-счётчиках диалога:
-    void slotSheetlengthValueChanged(double sheetlength_value); // Длина листа-заготовки
-    void slotSheetwidthValueChanged(double sheetwidth_value);   // Ширина листа-заготовки
+    void slotSheetwidthValueChanged(double dSheetwidthValue);   // Длина листа-заготовки
+    void slotSheetheightValueChanged(double dSheetheightValue); // Ширина листа-заготовки
 
 public:
     explicit SheetDialog(QWidget *parent = nullptr);

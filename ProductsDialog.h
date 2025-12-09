@@ -16,8 +16,8 @@ class productsDialog;
 
 // Перечисление с индексами столбцов таблицы:
 enum {
-    eColumnIndex_Length,
     eColumnIndex_Width,
+    eColumnIndex_Height,
     eColumnIndex_Quantity,
     eColumnIndex_Total
 };

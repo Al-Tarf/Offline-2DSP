@@ -1,8 +1,8 @@
 #include "Offline2DSP.h"
 
 // Конструктор:
-Offline2DSP::Offline2DSP(QObject *parent, uint uiLength, uint uiWidth)
-    : QObject(parent), Sheet(0, 0, uiLength, uiWidth) {
+Offline2DSP::Offline2DSP(QObject *parent, uint uiWidth, uint uiHeight)
+    : QObject(parent), Sheet(0, 0, uiWidth, uiHeight) {
 // На всякий случай очищаем вектора с исходными данными:
     Products.clear();
     Result.clear();

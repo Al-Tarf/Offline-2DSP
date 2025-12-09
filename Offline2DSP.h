@@ -16,7 +16,7 @@ public slots:
     void slotRunCalculate();    // Слот выполняющий вычисления
 
 public:
-    explicit Offline2DSP(QObject *parent = nullptr, uint uiLength = 0, uint uiWidth = 0);
+    explicit Offline2DSP(QObject *parent = nullptr, uint uiWidth = 0, uint uiHeight = 0);
     ~Offline2DSP();
 
     struct Stripe {
