@@ -22,11 +22,12 @@ signals:
     void signalRunCalculate(); // Сигнал запуска вычислений
 
 public slots:
-// Слоты, забирающие данные из диалоговых окон, и посылающие сигнал на запуск вычислений:
-    void slotProductsDataReady(QTableWidget* pqtv);
-    void slotSheetDataReady(qreal qLength, qreal qWidth);
-// Слот, посылающий событие отрисовки окна:
+// Слоты забирающие данные из диалоговых окон и посылающие сигнал на запуск вычислений:
+    void slotProductsDataReady(QTableWidget* pqtv);         // Данные по типам изделий и их количеству можно забирать
+    void slotSheetDataReady(qreal qLength, qreal qWidth);   // Данные о листе-заготовке можно забирать
+// Слот посылающий событие отрисовки окна:
     void slotRepaintResult();
+// Слоты отображающие диалоговые окна:
     void slotShowProductsDialog();
     void slotShowSheetDialog();
 
@@ -39,7 +40,6 @@ protected:
 
 private:
 // Указатели на диалоги:
-    // QDialog         *productsdialog, *sheetdialog;
     ProductsDialog  *productsdialog;
     SheetDialog     *sheetdialog;
 // Указатель на объект, получающий исходные данные, производящий расчёты и хранящий их результат

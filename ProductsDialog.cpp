@@ -81,15 +81,17 @@ void ProductsDialog::slotProdlistCellChanged(int row, int column) {
 
 // Метод проверяющий все ли ячейки таблицы заполнены значениями:
 void ProductsDialog::CheckCellData() {
-    bool bOK = true;
+    QString qsText;
+    bool    bOK = true;
 
     for (int row = 0; row < ui->prodlist->rowCount(); ++row) {
         for (int col = 0; col < eColumnIndex_Total; ++col) {
-            if (nullptr == ui->prodlist->item(row, col)) bOK = false;
+            if ( (nullptr == ui->prodlist->item(row, col))
+                || qsText.compare(ui->prodlist->item(row, col)->text(), "0"  , Qt::CaseSensitive)
+                || qsText.compare(ui->prodlist->item(row, col)->text(), "0.0", Qt::CaseSensitive) ) bOK = false;
         }
     }
 
-// Делаем кнопку "Применить" активной если заполнены все ячейки таблицы и неактивной в противном случае:
+    // Делаем кнопку "Применить" активной если заполнены все ячейки таблицы и неактивной в противном случае:
     ui->products_buttonBox->button(BTN_APPLY)->setEnabled(bOK);
 }
-
