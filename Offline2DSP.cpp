@@ -15,10 +15,12 @@ Offline2DSP::~Offline2DSP(){
 
 // Слот производящий расчёты:
 void Offline2DSP::slotRunCalculate() {
-// Проверяем все ли данные получены:
+// Перерисовываем лист-заготовку на экране если есть данные о его размере:
+    emit signalRepaintResult();
+// Проверяем все ли данные получены, если нет завершаем выполнение слота:
 /* (корректность данных в Products проверяется при сборе данных из таблицы в методе ProductsDialog::CheckCellData) */
     if (!Sheet.width() || !Sheet.height() || !Products.size()) return;
 
 // Запускаем перерисовку после расчётов:
-        emit signalRepaintResult();
+    emit signalRepaintResult();
 }

@@ -88,18 +88,38 @@ void MainWindow::slotRepaintResult() {
     repaint();
 }
 
-//Обработчик события отрисовки окна:
+// Обработчик события отрисовки окна:
 void MainWindow::paintEvent(QPaintEvent *event) {
     Q_UNUSED(event);
 
-    QPainter painter(this);
+    QPainter    painter(this);
+    QTransform  transform;
 
-    painter.setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::SquareCap));
+// Масштабирование сцены под размер листа-заготовки:
+    if ( this->width() && this->height() && o2dsp->Sheet.width() && o2dsp->Sheet.height() ) {
+        qreal qWindowWidth  = this->width(),
+              qWindowHeight = this->height(),
+              qSheetWidth   = o2dsp->Sheet.width(),
+              qSheetHeight  = o2dsp->Sheet.height(),
+              qScale        = (qSheetWidth > qSheetHeight) ? qWindowWidth/(qSheetWidth + 100) : qWindowHeight/(qSheetHeight + 100);
+
+        transform.scale(qScale, qScale);
+        painter.setTransform(transform);
+    }
+
+// Подготовка кисти и пера для прорисовки листа-заготовки:
     painter.setBrush(QColor(Qt::white));
-
+    painter.setPen(QPen(Qt::black, 3, Qt::SolidLine, Qt::SquareCap));
+// Прорисовка листа-заготовки:
     painter.drawRect(o2dsp->Sheet);
+
 //-> Тестовый код
     for (uint i=100; i<500; i+=100) o2dsp->Result.push_back(QRect(i/10, i/20, i, i/2));
 //<- Тестовый код
+
+// Подготовка кисти и пера для прорисовки изделий на листе-заготовке:
+    painter.setBrush(QColor(Qt::white));
+    painter.setPen(QPen(Qt::black, 1, Qt::SolidLine, Qt::SquareCap));
+// Прорисовка изделий на листе-заготовке:
     if (o2dsp->Result.size()) painter.drawRects(o2dsp->Result);
 }
