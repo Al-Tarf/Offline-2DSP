@@ -95,13 +95,17 @@ void MainWindow::paintEvent(QPaintEvent *event) {
     QPainter    painter(this);
     QTransform  transform;
 
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    painter.setWindow(QRect(-15, -40, width(), height()));
+
 // Масштабирование сцены под размер листа-заготовки:
-    if ( this->width() && this->height() && o2dsp->Sheet.width() && o2dsp->Sheet.height() ) {
-        qreal qWindowWidth  = this->width(),
-              qWindowHeight = this->height(),
+    if ( width() && height() && o2dsp->Sheet.width() && o2dsp->Sheet.height() ) {
+        qreal qWindowWidth  = width(),
+              qWindowHeight = height(),
               qSheetWidth   = o2dsp->Sheet.width(),
               qSheetHeight  = o2dsp->Sheet.height(),
-              qScale        = (qSheetWidth > qSheetHeight) ? qWindowWidth/(qSheetWidth + 100) : qWindowHeight/(qSheetHeight + 100);
+              qScale        = (qSheetWidth > qSheetHeight) ? qWindowWidth/(qSheetWidth + 200) : qWindowHeight/(qSheetHeight + 200);
 
         transform.scale(qScale, qScale);
         painter.setTransform(transform);
