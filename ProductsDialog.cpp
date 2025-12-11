@@ -86,9 +86,14 @@ void ProductsDialog::CheckCellData() {
 
     for (int row = 0; row < ui->prodlist->rowCount(); ++row) {
         for (int col = 0; col < eColumnIndex_Total; ++col) {
-            if ( (nullptr == ui->prodlist->item(row, col))
-                || qsText.compare(ui->prodlist->item(row, col)->text(), "0"  , Qt::CaseSensitive)
-                || qsText.compare(ui->prodlist->item(row, col)->text(), "0.0", Qt::CaseSensitive) ) bOK = false;
+            if ( nullptr == ui->prodlist->item(row, col) ) bOK = false;
+            else {
+                qsText.clear();
+                qsText.append(ui->prodlist->item(row, col)->text());
+/* Ниже используется if, а не присваивание значения логического выражения переменной bOK,
+ * чтобы bOK не стало true если последняя ячейка при проходе будет заполнена ненулевым значением */
+                if ( !qsText.compare("0"  , Qt::CaseSensitive) || !qsText.compare("0.0", Qt::CaseSensitive) ) bOK = false;
+            }
         }
     }
 
