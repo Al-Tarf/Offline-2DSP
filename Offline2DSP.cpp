@@ -21,6 +21,14 @@ void Offline2DSP::slotRunCalculate() {
 /* (корректность данных в Products проверяется при сборе данных из таблицы в методе ProductsDialog::CheckCellData) */
     if (!Sheet.width() || !Sheet.height() || !Products.size()) return;
 
+// Разворачиваем вектор с данными об изделиях и их количестве в вектор просто изделий:
+    for (uint i=0; i < Products.size(); i++)
+        for (uint j=0; j<Products[i].uiQuantity; j++) Buffer.push_back(Products[i].qrMeasurements);
+
+//-> Тестовый код
+    Result = Buffer;
+//<- Тестовый код
+
 // Запускаем перерисовку после расчётов:
     emit signalRepaintResult();
 }

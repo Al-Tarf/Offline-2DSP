@@ -27,6 +27,9 @@ public:
     QRect               Sheet;      // Переменная с размерами листа
     QVector<Stripe>     Products;   // Вектор с информацией об изделиях
     QVector<QRect>      Result;     // Вектор с результатами расчёта
+
+private:
+    QVector<QRect>      Buffer;     // Вектор для промежуточного хранения данных
 };
 
 #endif // OFFLINE2DSP_H

@@ -118,7 +118,7 @@ void MainWindow::paintEvent(QPaintEvent *event) {
     painter.drawRect(o2dsp->Sheet);
 
 //-> Тестовый код
-    for (uint i=100; i<500; i+=100) o2dsp->Result.push_back(QRect(i/10, i/20, i, i/2));
+//    for (uint i=100; i<500; i+=100) o2dsp->Result.push_back(QRect(i/10, i/20, i, i/2));
 //<- Тестовый код
 
 // Подготовка кисти и пера для прорисовки изделий на листе-заготовке:
