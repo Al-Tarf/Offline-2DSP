@@ -24,12 +24,25 @@ void Offline2DSP::slotRunCalculate() {
 // Предварительно сортируем данные о типах изделий по невозрастанию высоты:
     std::sort(Products.begin(), Products.end(), [] (Stripe a, Stripe b) {return a.qrMeasurements.height() >= b.qrMeasurements.height();} );
 
-// Разворачиваем отсортированный вектор с данными об изделиях и их количестве в вектор просто изделий:
+// Разворачиваем отсортированный вектор с данными об изделиях и их количестве в вектора просто изделий попутно разбивая изделия на классы согласно алгоритму "Split Fit":
+    int iWidth50  =      Sheet.width() / 2,
+        iWidth67  = (2 * Sheet.width())/ 3,
+        iWidth100 =      Sheet.width();
+
     for (uint i=0; i < Products.size(); i++)
-        for (uint j=0; j<Products[i].uiQuantity; j++) Buffer.push_back(Products[i].qrMeasurements);
+        for (uint j=0; j<Products[i].uiQuantity; j++) {
+            if      (       0 < Products[i].qrMeasurements.width() <= iWidth50)
+                buffer.width_0_50.push_back(Products[i].qrMeasurements);     // Будут упакованы в свободные места
+            else if (iWidth50 < Products[i].qrMeasurements.width() <= iWidth67)
+                buffer.width_51_66.push_back(Products[i].qrMeasurements);    // Будут упакованы во вторую очередь
+            else if (iWidth67 < Products[i].qrMeasurements.width() <= iWidth100)
+                buffer.width_67_100.push_back(Products[i].qrMeasurements);   // Будут упакованы в первую очередь
+            else
+                buffer.other.push_back(Products[i].qrMeasurements);          // Либо требуется поворот либо такие прямоугольники не будут упакованы
+        }
 
 //-> Тестовый код
-    Result = Buffer;
+    Result << buffer.width_0_50 << buffer.width_51_66 << buffer.width_67_100 << buffer.other;
 //<- Тестовый код
 
 // Запускаем перерисовку после расчётов:

@@ -92,7 +92,8 @@ void ProductsDialog::CheckCellData() {
                 qsText.append(ui->prodlist->item(row, col)->text());
 /* Ниже используется if, а не присваивание значения логического выражения переменной bOK,
  * чтобы bOK не стало true если последняя ячейка при проходе будет заполнена ненулевым значением */
-                if ( !qsText.compare("0"  , Qt::CaseSensitive) || !qsText.compare("0.0", Qt::CaseSensitive) ) bOK = false;
+                if ( !qsText.compare("0"  , Qt::CaseSensitive)
+                  || !qsText.compare("0.0", Qt::CaseSensitive) ) bOK = false;
             }
         }
     }
