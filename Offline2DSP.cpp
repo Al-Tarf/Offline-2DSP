@@ -38,7 +38,7 @@ void Offline2DSP::slotRunCalculate() {
             else if (iWidth67 < Products[i].qrMeasurements.width() <= iWidth100)
                 buffer.width_67_100.push_back(Products[i].qrMeasurements);   // Будут упакованы в первую очередь
             else
-                buffer.other.push_back(Products[i].qrMeasurements);          // Либо требуется поворот либо такие прямоугольники не будут упакованы
+                buffer.other.push_back(Products[i].qrMeasurements);          // Либо требуется поворот, либо такие прямоугольники не будут упакованы
         }
 
 //-> Тестовый код
